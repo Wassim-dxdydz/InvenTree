@@ -12,7 +12,6 @@ function PluginSettingsDisplay({
         <Alert color='blue' title='Hello World'>
             <Text>This is a custom settings page for the NFC plugin!</Text>
             <Text>Custom UI elements can be rendered here</Text>
-            <Text>As u can see I'm not dead</Text>
             <Button color="blue" onClick={() => {
                 notifications.show({
                     title: 'Hello World',

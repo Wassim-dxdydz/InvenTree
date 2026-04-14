@@ -1,9 +1,8 @@
-"""Custom model definitions for the NFC plugin.
+"""
+Database models for the NFC plugin in InvenTree.
 
-This file is where you can define any custom database models.
-
-- Any models defined here will require database migrations to be created.
-- Don't forget to register your models in the admin interface if needed!
+Defines the NFCTagLink model that establishes a many-to-one relationship between
+NFC tag UIDs and InvenTree parts, tracking which user linked the tag and when.
 """
 
 from django.db import models

@@ -1,43 +1,38 @@
-"""API serializers for the NFC plugin.
+"""
+Serializers for NFC tag REST API endpoints in InvenTree.
 
-In practice, you would define your custom serializers here.
-
-Ref: https://www.django-rest-framework.org/api-guide/serializers/
+Provides serialization of NFC tag links and associated part data for API responses.
 """
 
 from rest_framework import serializers
+from .models import NFCTagLink
 
 
-class ExampleSerializer(serializers.Serializer):
-    """Example serializer for the NFC plugin.
+class NFCTagLinkSerializer(serializers.Serializer):
+    """
+    Serializer for NFCTagLink model.
 
-    This simply demonstrates how to create a serializer,
-    with a few example fields of different types.
+    Converts NFCTagLink database records to JSON for API responses, including
+    nested part information (name, description, total stock) and a link to the part detail page.
     """
 
+    part_name = serializers.CharField(source = 'part.name', read_only = True)
+    part_description = serializers.CharField(source = 'part.description', read_only =  True)
+    total_stock =  serializers.FloatField(source = 'part.total_stock', read_only = True)
+    part_url = serializers.SerializerMethodField()
+
     class Meta:
-        """Meta options for this serializer."""
-
+        model = NFCTagLink
         fields = [
-            "random_text",
-            "part_count",
-            "today",
+            'id',
+            'uid',
+            'part',
+            'part_name',
+            'part_description',
+            'total_stock',
+            'part_url',
+            'linked_at'
         ]
-
-    random_text = serializers.CharField(
-        max_length=100,
-        required=True,
-        label="Random Text",
-        help_text="A text field containing randomly generated data.",
-    )
-
-    part_count = serializers.IntegerField(
-        label="Number of Parts",
-        help_text="Total number of parts in the InvenTree database.",
-    )
-
-    today = serializers.DateField(
-        required=False,
-        label="Today",
-        help_text="The current date.",
-    )
+    
+    def get_part_url(self, obj):
+        return f'/part/{obj.part.pk}/'
