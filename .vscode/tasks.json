@@ -10,61 +10,65 @@
       "label": "worker",
       "type": "shell",
       "command": "invoke worker",
-      "problemMatcher": [],
+      "problemMatcher": []
     },
     {
       "label": "clean-settings",
       "type": "shell",
       "command": "invoke int.clean-settings",
-      "problemMatcher": [],
+      "problemMatcher": []
     },
     {
       "label": "delete-data",
       "type": "shell",
       "command": "invoke dev.delete-data",
-      "problemMatcher": [],
+      "problemMatcher": []
     },
     {
       "label": "migrate",
       "type": "shell",
       "command": "invoke migrate",
       "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     },
     {
       "label": "server",
       "type": "shell",
       "command": "invoke dev.server",
-      "problemMatcher": [],
+      "problemMatcher": []
     },
     {
       "label": "setup-dev",
       "type": "shell",
       "command": "invoke dev.setup-dev",
-      "problemMatcher": [],
+      "problemMatcher": []
     },
     {
       "label": "setup-test",
       "type": "shell",
       "command": "invoke dev.setup-test -i --path dev/inventree-demo-dataset",
-      "problemMatcher": [],
+      "problemMatcher": []
     },
     {
       "label": "superuser",
       "type": "shell",
       "command": "invoke superuser",
-      "problemMatcher": [],
+      "problemMatcher": []
     },
     {
       "label": "test",
       "type": "shell",
       "command": "invoke dev.test",
-      "problemMatcher": [],
+      "problemMatcher": []
     },
     {
       "label": "update",
       "type": "shell",
       "command": "invoke update",
-      "problemMatcher": [],
-    },
+      "problemMatcher": []
+    }
   ]
 }
